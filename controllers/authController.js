@@ -4,7 +4,7 @@ const jwtGen = require("../utils/jwtGenerator");
 
 module.exports = {
     register : async (req, res) => {
-        const { name, username, email, password, address, phone_number } = req.body;
+        const { name, username, email, password, address, phoneNumber } = req.body;
 
         try {
             const user = await users.findOne({ where: { email } });
@@ -20,8 +20,9 @@ module.exports = {
                 username,
                 email,
                 password: hashedPassword,
+                role : "admin",
                 address,
-                phone_number
+                phoneNumber
             });
 
             res.status(201).json({
@@ -32,7 +33,7 @@ module.exports = {
 					email: newUser.email,
 					role: newUser.role,
 					address: newUser.address,
-					phone_number: newUser.phone_number,
+					phoneNumber: newUser.phoneNumber
 				}
                 });
 
