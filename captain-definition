@@ -8,6 +8,7 @@
                         "COPY ./package.json /usr/src/app/",
                         "RUN npm install -g nodemon",
                         "RUN npm install && npm cache clean --force",
+                        "RUN npm install mysql2 --save",
                         "RUN npx sequelize init",
                         "RUN npx sequelize db:create",
                         "RUN npx sequelize db:migrate",
